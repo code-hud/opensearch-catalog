@@ -16,11 +16,14 @@ The Hud integration includes the following dashboards:
 - **Hud: function**: a single function's rate, errors, duration percentiles, per-version breakdowns, callers and callees.
 - **Hud: investigations**: investigations over time by trigger, exceptions in failed requests, throwing functions and the latest investigations.
 
-## Data sources
+## Requirements
 
-- **Metrics** panels use PromQL against a Prometheus direct-query data source named `lifey_o11y_stack_prometheus`. Rename the data source in the panels to match your own Prometheus connection after installing.
-- **Investigation** panels use the `logs-otel-v1*` index pattern with `time` as the time field. This is where Data Prepper writes OTel logs in the OpenSearch observability stack.
+- **OpenSearch Dashboards 3.x with Explore enabled.** All panels are `explore` saved objects (PromQL and PPL); they do not load on 2.x or on Dashboards without Explore.
+- **A Prometheus direct-query data source named `hud_prometheus`.** The service, endpoint and function panels query it with PromQL. Create it under **Data sources** before installing, using exactly that name.
+- **Hud investigation logs in `logs-otel-v1*`.** The investigation panels run PPL over `logs-otel-v1*` (the Data Prepper default for OTel logs), using `time` as the time field.
 
 ## Installation
 
-Install the integration from **Integrations** in OpenSearch Dashboards, or import any of the `assets/*.ndjson` files (one per dashboard) directly via **Dashboards Management > Saved objects > Import**.
+Install the integration from **Integrations** in OpenSearch Dashboards.
+
+To import the assets manually instead, import `assets/hud-shared-1.0.0.ndjson` first, then any of the dashboard bundles, via **Dashboards Management > Saved objects > Import**. The shared bundle holds the index pattern and a panel that more than one dashboard uses.

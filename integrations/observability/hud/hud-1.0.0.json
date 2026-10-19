@@ -2,7 +2,7 @@
   "name": "hud",
   "version": "1.0.0",
   "displayName": "Hud",
-  "description": "Service, endpoint, function and investigation dashboards for applications instrumented with the Hud SDK.",
+  "description": "Service, endpoint, function and investigation dashboards for applications instrumented with the Hud SDK. Requires OpenSearch Dashboards 3.x with Explore and a Prometheus direct-query data source named hud_prometheus.",
   "license": "Apache-2.0",
   "type": "logs",
   "labels": ["Observability", "Logs", "Metrics"],
@@ -23,10 +23,10 @@
     }
   },
   "components": [
-    { "name": "logs", "version": "1.0.0" },
-    { "name": "metrics", "version": "1.0.0" }
+    { "name": "logs", "version": "1.0.0" }
   ],
   "assets": [
+    { "name": "hud-shared", "version": "1.0.0", "extension": "ndjson", "type": "savedObjectBundle", "workflows": ["dashboards"] },
     { "name": "hud-service-overview", "version": "1.0.0", "extension": "ndjson", "type": "savedObjectBundle", "workflows": ["dashboards"] },
     { "name": "hud-endpoints", "version": "1.0.0", "extension": "ndjson", "type": "savedObjectBundle", "workflows": ["dashboards"] },
     { "name": "hud-functions", "version": "1.0.0", "extension": "ndjson", "type": "savedObjectBundle", "workflows": ["dashboards"] },
