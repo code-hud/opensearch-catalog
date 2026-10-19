@@ -23,4 +23,4 @@ The Hud integration includes the following dashboards:
 
 ## Installation
 
-Install the integration from **Integrations** in OpenSearch Dashboards, or import `assets/hud-1.0.0.ndjson` directly via **Dashboards Management > Saved objects > Import**.
+Install the integration from **Integrations** in OpenSearch Dashboards, or import any of the `assets/*.ndjson` files (one per dashboard) directly via **Dashboards Management > Saved objects > Import**.

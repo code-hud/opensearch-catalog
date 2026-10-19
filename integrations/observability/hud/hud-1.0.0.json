@@ -27,6 +27,10 @@
     { "name": "metrics", "version": "1.0.0" }
   ],
   "assets": [
-    { "name": "hud", "version": "1.0.0", "extension": "ndjson", "type": "savedObjectBundle", "workflows": ["dashboards"] }
+    { "name": "hud-service-overview", "version": "1.0.0", "extension": "ndjson", "type": "savedObjectBundle", "workflows": ["dashboards"] },
+    { "name": "hud-endpoints", "version": "1.0.0", "extension": "ndjson", "type": "savedObjectBundle", "workflows": ["dashboards"] },
+    { "name": "hud-functions", "version": "1.0.0", "extension": "ndjson", "type": "savedObjectBundle", "workflows": ["dashboards"] },
+    { "name": "hud-function", "version": "1.0.0", "extension": "ndjson", "type": "savedObjectBundle", "workflows": ["dashboards"] },
+    { "name": "hud-investigations", "version": "1.0.0", "extension": "ndjson", "type": "savedObjectBundle", "workflows": ["dashboards"] }
   ]
 }
