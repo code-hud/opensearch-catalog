@@ -20,7 +20,7 @@ The Hud integration includes the following dashboards:
 
 - **OpenSearch Dashboards 3.x with Explore enabled.** All panels are `explore` saved objects (PromQL and PPL); they do not load on 2.x or on Dashboards without Explore.
 - **A Prometheus direct-query data source named `hud_prometheus`.** The service, endpoint and function panels query it with PromQL. Create it under **Data sources** before installing, using exactly that name.
-- **Hud investigation logs in `logs-otel-v1*`.** The investigation panels run PPL over `logs-otel-v1*` (the Data Prepper default for OTel logs), using `time` as the time field.
+- **Hud investigation logs in `logs-otel-v1*`.** The investigation panels run PPL over `logs-otel-v1*` (the Data Prepper default for OTel logs), using `time` as the time field. The index name is part of each PPL query (`source = logs-otel-v1*`), so the index selected while installing the integration does not change it. If your logs are written elsewhere, edit the panel queries after installing.
 
 ## Installation
 
