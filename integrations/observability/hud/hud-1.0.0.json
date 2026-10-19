@@ -1,0 +1,32 @@
+{
+  "name": "hud",
+  "version": "1.0.0",
+  "displayName": "Hud",
+  "description": "Service, endpoint, function and investigation dashboards for applications instrumented with the Hud SDK.",
+  "license": "Apache-2.0",
+  "type": "logs",
+  "labels": ["Observability", "Logs", "Metrics"],
+  "author": "Hud",
+  "sourceUrl": "https://github.com/opensearch-project/opensearch-catalog/tree/main/integrations/observability/hud/info",
+  "workflows": [
+    {
+      "name": "dashboards",
+      "label": "Dashboards & Visualizations",
+      "description": "Dashboards and index patterns for Hud service, endpoint, function and investigation data.",
+      "enabled_by_default": true
+    }
+  ],
+  "statics": {
+    "logo": {
+      "annotation": "Hud Logo",
+      "path": "logo.svg"
+    }
+  },
+  "components": [
+    { "name": "logs", "version": "1.0.0" },
+    { "name": "metrics", "version": "1.0.0" }
+  ],
+  "assets": [
+    { "name": "hud", "version": "1.0.0", "extension": "ndjson", "type": "savedObjectBundle", "workflows": ["dashboards"] }
+  ]
+}
