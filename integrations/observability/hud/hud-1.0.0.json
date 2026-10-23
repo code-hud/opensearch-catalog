@@ -4,7 +4,7 @@
   "displayName": "Hud",
   "description": "Service, endpoint, function and investigation dashboards for applications instrumented with the Hud SDK. Requires OpenSearch Dashboards 3.x with Explore and a Prometheus direct-query data source named hud_prometheus.",
   "license": "Apache-2.0",
-  "type": "logs",
+  "type": "logs_hud",
   "labels": ["Observability", "Logs", "Metrics"],
   "author": "Hud",
   "sourceUrl": "https://github.com/opensearch-project/opensearch-catalog/tree/main/integrations/observability/hud/info",
@@ -23,7 +23,7 @@
     }
   },
   "components": [
-    { "name": "logs", "version": "1.0.0" }
+    { "name": "logs_hud", "version": "1.0.0" }
   ],
   "assets": [
     { "name": "hud-shared", "version": "1.0.0", "extension": "ndjson", "type": "savedObjectBundle", "workflows": ["dashboards"] },
