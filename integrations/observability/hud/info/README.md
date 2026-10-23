@@ -25,13 +25,16 @@ The Hud integration includes the following dashboards:
 
 ## Requirements
 
-- **OpenSearch Dashboards 3.7 or later, with Explore and dashboard variables enabled.** All panels are `explore` saved objects (PromQL and PPL), and every dashboard has a variable (service, endpoint or function). Dashboard variables (`variablesJSON`) were added in 3.7; on 3.8 and later they are controlled by `dashboard.variables.enabled` (default `true`). On older versions, or with variables disabled, the dashboards are not created.
-- **A Prometheus direct-query data source named `hud_prometheus`.** The service, endpoint and function panels query it with PromQL. Create it under **Data sources** before installing, using exactly that name. The Prometheus server must store native histograms (`hud_function_duration` and `hud_http_endpoint_duration`) and support the `@` modifier.
-- **Hud investigation logs in `logs-otel-v1-*`.** The investigation panels run PPL over `logs-otel-v1*` (the Data Prepper default for OTel logs), using `time` as the time field. The index name is part of each panel's query and dataset, so the index selected while installing the integration does not change it. If your logs are written elsewhere, edit the panel queries after installing.
+- **OpenSearch Dashboards 3.9 or later, with Explore and dashboard variables enabled, or OpenSearch UI on Amazon OpenSearch Service.** All panels are `explore` saved objects (PromQL and PPL), and every dashboard has a variable (service, endpoint or function) whose values come from a Prometheus label-values lookup. Dashboard variables were added in 3.7, but the PromQL query type for variables was added in 3.9. On 3.8 and later, variables are controlled by `dashboard.variables.enabled` (default `true`). On Amazon OpenSearch Service, use an **Observability workspace** in OpenSearch UI: Discover Metrics, PromQL panels and dashboard variables are not available in the OpenSearch Dashboards hosted on a domain.
+- **A Prometheus direct-query data source named `hud_prometheus`.** The service, endpoint and function panels query it with PromQL. Create it before installing, using exactly that name. It can be a self-managed Prometheus (2.40 or later, with native histograms enabled) or an Amazon Managed Service for Prometheus (AMP) workspace; see [Amazon OpenSearch Service and Amazon Managed Service for Prometheus](#amazon-opensearch-service-and-amazon-managed-service-for-prometheus).
+- **Native histograms.** `hud_function_duration` and `hud_http_endpoint_duration` must be stored as Prometheus native histograms. The panels read them with `histogram_quantile`, `histogram_avg`, `histogram_sum` and `histogram_count` over the bare metric name, and use the `@ end()` modifier. AMP supports both.
+- **Hud investigation logs in `logs-otel-v1-*`.** The investigation panels run PPL over `logs-otel-v1*` (the Data Prepper and OpenSearch Ingestion default for OTel logs), using `time` as the time field. The index name is part of each panel's query and dataset, so the index selected while installing the integration does not change it. If your logs are written elsewhere, edit the panel queries after installing.
 
 ## Data
 
 ### Metrics (Prometheus)
+
+The metric names and labels in this table are the contract the dashboards depend on: the panel queries and dashboard variables use them verbatim. `service_name` and `service_instance_id` come from the OTel resource attributes `service.name` and `service.instance.id`, so the OTLP path into Prometheus must turn resource attributes into labels (Prometheus `otlp.promote_resource_attributes`, or `resource_to_telemetry_conversion` on the OpenTelemetry Collector `prometheusremotewrite` exporter). The other labels are data-point attributes the Hud SDK sets. The metric names must arrive without a unit suffix.
 
 | Metric | Type | Labels used by the dashboards |
 | --- | --- | --- |
@@ -51,6 +54,46 @@ Each investigation is one log record with `attributes.event.name = 'hud.investig
 
 Install the integration from **Integrations** in OpenSearch Dashboards. When asked for the data source, enter `logs-otel-v1*`.
 
-Installing from **Integrations** gives every saved object a new id. The links between dashboards (clicking an endpoint or a function in a table) open dashboards by id, so after an install from **Integrations** they show "Could not locate that dashboard". To keep the links working, import the assets manually instead.
+The links between dashboards (clicking an endpoint or a function in a table) open dashboards by id. Installing from **Integrations** gives every saved object a new id, and the installer does not yet rewrite the ids inside those links, so after an install from **Integrations** they show "Could not locate that dashboard". The links need a fix in the dashboards-observability integrations installer that rewrites the old ids in panel links to the new ones. Until that fix ships, import the assets manually to keep the links working.
 
-To import the assets manually, import `assets/hud-shared-1.0.0.ndjson` first, then the dashboard bundles, via **Dashboards Management > Saved objects > Import**. The shared bundle holds the index pattern and a panel that more than one dashboard uses. Manual import keeps the saved object ids, so the links between dashboards work.
+To import the assets manually, import `assets/hud-shared-1.0.0.ndjson` first, then the dashboard bundles, via **Dashboards Management > Saved objects > Import**. The shared bundle holds the index pattern and a panel that more than one dashboard uses. Manual import keeps the saved object ids, so the links between dashboards work. In an OpenSearch UI workspace, import from **Assets > Import** and choose **Check for existing assets**: the default, **Create new assets with unique IDs**, gives the objects new ids and breaks the links. Importing through the saved objects API with a `dataSourceId` parameter also renames every object to `<dataSourceId>_<id>`, which breaks the links in the same way.
+
+## Amazon OpenSearch Service and Amazon Managed Service for Prometheus
+
+On AWS, metrics go to an Amazon Managed Service for Prometheus (AMP) workspace, investigation logs go to an OpenSearch Service domain, and the dashboards run in an OpenSearch UI Observability workspace.
+
+1. **Send metrics to AMP as native histograms.** Use an OpenTelemetry Collector (or the AWS Distro for OpenTelemetry) with the `prometheusremotewrite` exporter and the `sigv4auth` extension, pointed at `https://aps-workspaces.<region>.amazonaws.com/workspaces/<workspace-id>/api/v1/remote_write`. That exporter writes OTel exponential histograms as native histograms, and AMP stores and queries them with no workspace setting. Enable `resource_to_telemetry_conversion` so `service_name` becomes a label. The collector's credentials need `aps:RemoteWrite`. Don't route the metrics through the OpenSearch Ingestion `prometheus` sink: it writes histograms as separate `_bucket`, `_sum` and `_count` series, which these panels can't read.
+
+   ```yaml
+   extensions:
+     sigv4auth:
+       region: <region>
+       service: aps
+   exporters:
+     prometheusremotewrite:
+       endpoint: https://aps-workspaces.<region>.amazonaws.com/workspaces/<workspace-id>/api/v1/remote_write
+       auth:
+         authenticator: sigv4auth
+       resource_to_telemetry_conversion:
+         enabled: true
+   service:
+     extensions: [sigv4auth]
+     pipelines:
+       metrics:
+         receivers: [otlp]
+         exporters: [prometheusremotewrite]
+   ```
+
+2. **Connect AMP as the `hud_prometheus` data source.** In the OpenSearch Service console, open **Central management > Connected data sources > Connect new data source**, choose **Amazon Managed Service for Prometheus**, and name it `hud_prometheus`. OpenSearch Service queries AMP with an IAM role that it assumes, and signs the requests with SigV4 itself, so no credentials are stored in OpenSearch. Let the console create the role, or pass your own:
+
+   ```
+   aws opensearch add-direct-query-data-source \
+     --data-source-name hud_prometheus \
+     --data-source-type 'Prometheus={RoleArn=arn:aws:iam::<account>:role/<role>,WorkspaceArn=arn:aws:aps:<region>:<account>:workspace/<workspace-id>}'
+   ```
+
+   The role's trust policy must allow `directquery.opensearchservice.amazonaws.com` to call `sts:AssumeRole`, scoped with `aws:SourceArn` = `arn:aws:opensearch:<region>:<account>:datasource/hud_prometheus` and `aws:SourceAccount`. For these dashboards the role needs `aps:QueryMetrics`, `aps:GetLabels`, `aps:GetSeries` and `aps:GetMetricMetadata` on the workspace. The OpenSearch Service documentation lists the full policy, which adds the alerting and rule-group actions that OpenSearch UI's alerting pages use.
+
+3. **Use an Observability workspace.** AMP data sources are only available in Observability workspaces of OpenSearch UI. Associate both the `hud_prometheus` data connection and the OpenSearch domain that holds `logs-otel-v1-*` with the workspace, then import the assets there as described in [Installation](#installation).
+
+Limits that apply on AMP: a query times out after 30 seconds, and each query counts against the workspace's Query Samples Processed quota. Panels that aggregate over the whole time range (`[$__range] @ end()`) read more samples the longer the range, so keep dashboard ranges to hours or a few days.
