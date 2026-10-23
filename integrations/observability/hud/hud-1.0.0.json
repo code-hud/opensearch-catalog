@@ -2,10 +2,10 @@
   "name": "hud",
   "version": "1.0.0",
   "displayName": "Hud",
-  "description": "Service, endpoint, function and investigation dashboards for applications instrumented with the Hud SDK. Requires OpenSearch Dashboards 3.x with Explore and a Prometheus direct-query data source named hud_prometheus.",
+  "description": "Service, endpoint, function and investigation dashboards for applications instrumented with the Hud SDK. Requires OpenSearch Dashboards 3.7 or later with Explore and dashboard variables enabled, a Prometheus direct-query data source named hud_prometheus, and Hud investigation logs in logs-otel-v1-*.",
   "license": "Apache-2.0",
   "type": "logs_hud",
-  "labels": ["Observability", "Logs", "Metrics"],
+  "labels": ["Observability", "Logs", "Metrics", "Prometheus"],
   "author": "Hud",
   "sourceUrl": "https://github.com/opensearch-project/opensearch-catalog/tree/main/integrations/observability/hud/info",
   "workflows": [
@@ -20,7 +20,12 @@
     "logo": {
       "annotation": "Hud Logo",
       "path": "logo.svg"
-    }
+    },
+    "gallery": [
+      { "annotation": "Hud: service overview", "path": "dashboard-service-overview.png" },
+      { "annotation": "Hud: endpoint", "path": "dashboard-endpoint.png" },
+      { "annotation": "Hud: investigations", "path": "dashboard-investigations.png" }
+    ]
   },
   "components": [
     { "name": "logs_hud", "version": "1.0.0" }
