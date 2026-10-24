@@ -1,0 +1,117 @@
+{
+  "index_patterns": ["logs-otel-v1-*"],
+  "priority": 100,
+  "template": {
+    "mappings": {
+      "_meta": {
+        "version": "1.0.0",
+        "catalog": "observability",
+        "type": "logs",
+        "component": "logs_hud",
+        "description": "Hud investigation records: OTLP log records from the Hud SDK as Data Prepper indexes them into logs-otel-v1-*",
+        "correlations": [
+          {
+            "field": "spanId",
+            "foreign-schema": "traces",
+            "foreign-field": "spanId"
+          },
+          {
+            "field": "traceId",
+            "foreign-schema": "traces",
+            "foreign-field": "traceId"
+          }
+        ]
+      },
+      "_source": {
+        "enabled": true
+      },
+      "properties": {
+        "time": {
+          "type": "date"
+        },
+        "observedTime": {
+          "type": "date"
+        },
+        "severityText": {
+          "type": "keyword"
+        },
+        "severityNumber": {
+          "type": "long"
+        },
+        "body": {
+          "type": "text"
+        },
+        "traceId": {
+          "type": "keyword"
+        },
+        "spanId": {
+          "type": "keyword"
+        },
+        "resource": {
+          "properties": {
+            "attributes": {
+              "properties": {
+                "service": {
+                  "properties": {
+                    "name": {
+                      "type": "keyword"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "attributes": {
+          "properties": {
+            "event": {
+              "properties": {
+                "name": {
+                  "type": "keyword"
+                }
+              }
+            },
+            "trigger_type": {
+              "type": "keyword"
+            },
+            "endpoint_method": {
+              "type": "keyword"
+            },
+            "endpoint_path": {
+              "type": "keyword"
+            },
+            "service_endpoint": {
+              "type": "keyword"
+            },
+            "status_code": {
+              "type": "long"
+            },
+            "duration_ms": {
+              "type": "double"
+            },
+            "exception_type": {
+              "type": "keyword"
+            },
+            "exception_message": {
+              "type": "text"
+            },
+            "function_name": {
+              "type": "keyword"
+            },
+            "function_file": {
+              "type": "keyword"
+            },
+            "service_function_key": {
+              "type": "keyword"
+            },
+            "execution_flow": {
+              "type": "keyword"
+            }
+          }
+        }
+      }
+    }
+  },
+  "composed_of": [],
+  "version": 1
+}

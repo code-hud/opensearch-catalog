@@ -1,0 +1,99 @@
+[
+  {
+    "time": "2026-10-20T14:38:08.000Z",
+    "observedTime": "2026-10-20T14:38:08.120Z",
+    "severityText": "ERROR",
+    "severityNumber": 17,
+    "body": "hud.investigation trigger=Error endpoint=GET /orders/:id",
+    "traceId": "4bf92f3577b34da6a3ce929d0e0e4736",
+    "spanId": "00f067aa0ba902b7",
+    "resource": {
+      "attributes": {
+        "service": {
+          "name": "shop-api"
+        }
+      }
+    },
+    "attributes": {
+      "event": {
+        "name": "hud.investigation"
+      },
+      "trigger_type": "Error",
+      "endpoint_method": "GET",
+      "endpoint_path": "/orders/:id",
+      "service_endpoint": "shop-api GET /orders/:id",
+      "status_code": 500,
+      "duration_ms": 906.2,
+      "exception_type": "TypeError",
+      "exception_message": "Cannot read properties of undefined (reading 'items')",
+      "function_name": "getOrder",
+      "function_file": "orders.ts",
+      "service_function_key": "shop-api:orders.ts:getOrder",
+      "execution_flow": "shop-api:routes.ts:ordersRoute > shop-api:orders.ts:getOrder"
+    }
+  },
+  {
+    "time": "2026-10-20T14:37:41.000Z",
+    "observedTime": "2026-10-20T14:37:41.090Z",
+    "severityText": "ERROR",
+    "severityNumber": 17,
+    "body": "hud.investigation trigger=Error endpoint=POST /checkout",
+    "traceId": "a3ce929d0e0e47364bf92f3577b34da6",
+    "spanId": "b7ad6b7169203331",
+    "resource": {
+      "attributes": {
+        "service": {
+          "name": "shop-api"
+        }
+      }
+    },
+    "attributes": {
+      "event": {
+        "name": "hud.investigation"
+      },
+      "trigger_type": "Error",
+      "endpoint_method": "POST",
+      "endpoint_path": "/checkout",
+      "service_endpoint": "shop-api POST /checkout",
+      "status_code": 500,
+      "duration_ms": 2030.7,
+      "exception_type": "TimeoutError",
+      "exception_message": "Payment gateway did not respond within 2000 ms",
+      "function_name": "chargeCard",
+      "function_file": "billing.ts",
+      "service_function_key": "shop-api:billing.ts:chargeCard",
+      "execution_flow": "shop-api:checkout.ts:checkout > shop-api:billing.ts:chargeCard"
+    }
+  },
+  {
+    "time": "2026-10-20T14:33:08.000Z",
+    "observedTime": "2026-10-20T14:33:08.070Z",
+    "severityText": "WARN",
+    "severityNumber": 13,
+    "body": "hud.investigation trigger=Duration endpoint=POST /checkout",
+    "traceId": "0e0e47364bf92f3577b34da6a3ce929d",
+    "spanId": "53995c3f42cd8ad8",
+    "resource": {
+      "attributes": {
+        "service": {
+          "name": "shop-api"
+        }
+      }
+    },
+    "attributes": {
+      "event": {
+        "name": "hud.investigation"
+      },
+      "trigger_type": "Duration",
+      "endpoint_method": "POST",
+      "endpoint_path": "/checkout",
+      "service_endpoint": "shop-api POST /checkout",
+      "status_code": 200,
+      "duration_ms": 1515.5,
+      "function_name": "loadCart",
+      "function_file": "cart.ts",
+      "service_function_key": "shop-api:cart.ts:loadCart",
+      "execution_flow": "shop-api:checkout.ts:checkout > shop-api:cart.ts:loadCart"
+    }
+  }
+]
