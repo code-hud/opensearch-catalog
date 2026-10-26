@@ -141,6 +141,19 @@
       "tags": ["log", "aws", "s3", "cloud", "waf"]
     },
     {
+      "component": "Hud Integration",
+      "description": "Hud is a runtime code sensor that reports function-level and endpoint-level telemetry from production services and captures investigations for failing requests. Dashboards for services, endpoints and functions over the Prometheus metrics of the Hud SDK in OTLP mode.",
+      "version": "1.0",
+      "url": "https://github.com/opensearch-project/opensearch-catalog/blob/main/integrations/observability/hud",
+      "logo": "https://raw.githubusercontent.com/opensearch-project/opensearch-catalog/main/integrations/observability/hud/static/logo.svg",
+      "gallery": [
+        {
+          "asset": "dashboard",
+          "image": "https://raw.githubusercontent.com/opensearch-project/opensearch-catalog/main/integrations/observability/hud/static/dashboard-service-overview.png"
+        }],
+      "tags": ["log", "metrics", "prometheus", "services"]
+    },
+    {
       "component": "Kubernetes Integration",
       "description": "Kubernetes is an open-source container orchestration platform that automates the deployment, scaling, and management of containerized applications. It provides a robust and scalable infrastructure for running applications in a cloud-native environment.\n/HTTPS requests based on specific conditions.",
       "version": "1.0",
