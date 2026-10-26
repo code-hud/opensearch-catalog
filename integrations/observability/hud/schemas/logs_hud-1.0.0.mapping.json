@@ -8,7 +8,7 @@
         "catalog": "observability",
         "type": "logs",
         "component": "logs_hud",
-        "description": "Hud investigation records: OTLP log records from the Hud SDK as Data Prepper indexes them into logs-otel-v1-*",
+        "description": "Hud forensic records: the hud.forensic OTLP log records of the Hud SDK (one per captured error or slow request) as Data Prepper or OpenSearch Ingestion indexes them into logs-otel-v1-*. The body is the forensic itself as a JSON string; the attributes identify its flow and issue.",
         "correlations": [
           {
             "field": "spanId",
@@ -29,7 +29,7 @@
         "time": {
           "type": "date"
         },
-        "observedTime": {
+        "observedTimestamp": {
           "type": "date"
         },
         "severityText": {
@@ -47,6 +47,16 @@
         "spanId": {
           "type": "keyword"
         },
+        "instrumentationScope": {
+          "properties": {
+            "name": {
+              "type": "keyword"
+            },
+            "version": {
+              "type": "keyword"
+            }
+          }
+        },
         "resource": {
           "properties": {
             "attributes": {
@@ -55,6 +65,27 @@
                   "properties": {
                     "name": {
                       "type": "keyword"
+                    },
+                    "instance": {
+                      "properties": {
+                        "id": {
+                          "type": "keyword"
+                        }
+                      }
+                    }
+                  }
+                },
+                "telemetry": {
+                  "properties": {
+                    "sdk": {
+                      "properties": {
+                        "name": {
+                          "type": "keyword"
+                        },
+                        "version": {
+                          "type": "keyword"
+                        }
+                      }
                     }
                   }
                 }
@@ -64,48 +95,77 @@
         },
         "attributes": {
           "properties": {
-            "event": {
+            "hud": {
               "properties": {
-                "name": {
-                  "type": "keyword"
+                "forensic": {
+                  "properties": {
+                    "type": {
+                      "type": "keyword"
+                    },
+                    "version": {
+                      "type": "keyword"
+                    }
+                  }
+                },
+                "issue": {
+                  "properties": {
+                    "fingerprint": {
+                      "type": "keyword"
+                    },
+                    "caught": {
+                      "type": "boolean"
+                    },
+                    "framework_result": {
+                      "type": "keyword"
+                    },
+                    "sources": {
+                      "type": "keyword"
+                    }
+                  }
+                },
+                "endpoint": {
+                  "properties": {
+                    "methods": {
+                      "type": "keyword"
+                    }
+                  }
                 }
               }
             },
-            "trigger_type": {
-              "type": "keyword"
+            "code": {
+              "properties": {
+                "flow": {
+                  "properties": {
+                    "name": {
+                      "type": "keyword"
+                    },
+                    "type": {
+                      "type": "keyword"
+                    }
+                  }
+                }
+              }
             },
-            "endpoint_method": {
-              "type": "keyword"
-            },
-            "endpoint_path": {
-              "type": "keyword"
-            },
-            "service_endpoint": {
-              "type": "keyword"
-            },
-            "status_code": {
-              "type": "long"
-            },
-            "duration_ms": {
-              "type": "double"
-            },
-            "exception_type": {
-              "type": "keyword"
-            },
-            "exception_message": {
-              "type": "text"
-            },
-            "function_name": {
-              "type": "keyword"
-            },
-            "function_file": {
-              "type": "keyword"
-            },
-            "service_function_key": {
-              "type": "keyword"
-            },
-            "execution_flow": {
-              "type": "keyword"
+            "http": {
+              "properties": {
+                "route": {
+                  "type": "keyword"
+                },
+                "request": {
+                  "properties": {
+                    "method": {
+                      "type": "keyword"
+                    }
+                  }
+                },
+                "response": {
+                  "properties": {
+                    "status_code": {
+                      "type": "long"
+                    }
+                  }
+                }
+              }
             }
           }
         }

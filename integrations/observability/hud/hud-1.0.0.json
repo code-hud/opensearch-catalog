@@ -2,7 +2,7 @@
   "name": "hud",
   "version": "1.0.0",
   "displayName": "Hud",
-  "description": "Service, endpoint and function dashboards for applications instrumented with the Hud SDK in OTLP mode. Requires OpenSearch Dashboards 3.10 or later with Explore and dashboard variables enabled (or an OpenSearch UI Observability workspace) and a Prometheus or Amazon Managed Service for Prometheus direct-query data source named hud_prometheus with native histograms. Investigation logs in logs-otel-v1-* are optional until the SDK exports them.",
+  "description": "Service, endpoint, function and forensic dashboards for applications instrumented with the Hud SDK in OTLP mode. Requires OpenSearch Dashboards 3.10 or later with Explore and dashboard variables enabled (or an OpenSearch UI Observability workspace), a Prometheus or Amazon Managed Service for Prometheus direct-query data source named hud_prometheus with native histograms, and the SDK's hud.forensic log records in logs-otel-v1-*.",
   "license": "Apache-2.0",
   "type": "logs_hud",
   "labels": ["Observability", "Logs", "Metrics", "Prometheus"],
@@ -12,7 +12,7 @@
     {
       "name": "dashboards",
       "label": "Dashboards & Visualizations",
-      "description": "Dashboards and index patterns for Hud service, endpoint, function and investigation data.",
+      "description": "Dashboards and index patterns for Hud service, endpoint, function and forensic data.",
       "enabled_by_default": true
     }
   ],
@@ -34,6 +34,7 @@
     { "name": "hud-shared", "version": "1.0.0", "extension": "ndjson", "type": "savedObjectBundle", "workflows": ["dashboards"] },
     { "name": "hud-service-overview", "version": "1.0.0", "extension": "ndjson", "type": "savedObjectBundle", "workflows": ["dashboards"] },
     { "name": "hud-endpoint", "version": "1.0.0", "extension": "ndjson", "type": "savedObjectBundle", "workflows": ["dashboards"] },
-    { "name": "hud-function", "version": "1.0.0", "extension": "ndjson", "type": "savedObjectBundle", "workflows": ["dashboards"] }
+    { "name": "hud-function", "version": "1.0.0", "extension": "ndjson", "type": "savedObjectBundle", "workflows": ["dashboards"] },
+    { "name": "hud-forensic", "version": "1.0.0", "extension": "ndjson", "type": "savedObjectBundle", "workflows": ["dashboards"] }
   ]
 }

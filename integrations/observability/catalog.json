@@ -142,7 +142,7 @@
     },
     {
       "component": "Hud Integration",
-      "description": "Hud is a runtime code sensor that reports function-level and endpoint-level telemetry from production services and captures investigations for failing requests. Dashboards for services, endpoints and functions over the Prometheus metrics of the Hud SDK in OTLP mode.",
+      "description": "Hud is a runtime code sensor that reports function-level and endpoint-level telemetry from production services and captures a forensic record for each failing or slow request. Dashboards for services, endpoints, functions and forensics over the Prometheus metrics and OpenSearch log records of the Hud SDK in OTLP mode.",
       "version": "1.0",
       "url": "https://github.com/opensearch-project/opensearch-catalog/blob/main/integrations/observability/hud",
       "logo": "https://raw.githubusercontent.com/opensearch-project/opensearch-catalog/main/integrations/observability/hud/static/logo.svg",
