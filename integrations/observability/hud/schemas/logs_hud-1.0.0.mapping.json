@@ -1,0 +1,177 @@
+{
+  "index_patterns": ["logs-otel-v1-*"],
+  "priority": 100,
+  "template": {
+    "mappings": {
+      "_meta": {
+        "version": "1.0.0",
+        "catalog": "observability",
+        "type": "logs",
+        "component": "logs_hud",
+        "description": "Hud forensic records: the hud.forensic OTLP log records of the Hud SDK (one per captured error or slow request) as Data Prepper or OpenSearch Ingestion indexes them into logs-otel-v1-*. The body is the forensic itself as a JSON string; the attributes identify its flow and issue.",
+        "correlations": [
+          {
+            "field": "spanId",
+            "foreign-schema": "traces",
+            "foreign-field": "spanId"
+          },
+          {
+            "field": "traceId",
+            "foreign-schema": "traces",
+            "foreign-field": "traceId"
+          }
+        ]
+      },
+      "_source": {
+        "enabled": true
+      },
+      "properties": {
+        "time": {
+          "type": "date"
+        },
+        "observedTimestamp": {
+          "type": "date"
+        },
+        "severityText": {
+          "type": "keyword"
+        },
+        "severityNumber": {
+          "type": "long"
+        },
+        "body": {
+          "type": "text"
+        },
+        "traceId": {
+          "type": "keyword"
+        },
+        "spanId": {
+          "type": "keyword"
+        },
+        "instrumentationScope": {
+          "properties": {
+            "name": {
+              "type": "keyword"
+            },
+            "version": {
+              "type": "keyword"
+            }
+          }
+        },
+        "resource": {
+          "properties": {
+            "attributes": {
+              "properties": {
+                "service": {
+                  "properties": {
+                    "name": {
+                      "type": "keyword"
+                    },
+                    "instance": {
+                      "properties": {
+                        "id": {
+                          "type": "keyword"
+                        }
+                      }
+                    }
+                  }
+                },
+                "telemetry": {
+                  "properties": {
+                    "sdk": {
+                      "properties": {
+                        "name": {
+                          "type": "keyword"
+                        },
+                        "version": {
+                          "type": "keyword"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "attributes": {
+          "properties": {
+            "hud": {
+              "properties": {
+                "forensic": {
+                  "properties": {
+                    "type": {
+                      "type": "keyword"
+                    },
+                    "version": {
+                      "type": "keyword"
+                    }
+                  }
+                },
+                "issue": {
+                  "properties": {
+                    "fingerprint": {
+                      "type": "keyword"
+                    },
+                    "caught": {
+                      "type": "boolean"
+                    },
+                    "framework_result": {
+                      "type": "keyword"
+                    },
+                    "sources": {
+                      "type": "keyword"
+                    }
+                  }
+                },
+                "endpoint": {
+                  "properties": {
+                    "methods": {
+                      "type": "keyword"
+                    }
+                  }
+                }
+              }
+            },
+            "code": {
+              "properties": {
+                "flow": {
+                  "properties": {
+                    "name": {
+                      "type": "keyword"
+                    },
+                    "type": {
+                      "type": "keyword"
+                    }
+                  }
+                }
+              }
+            },
+            "http": {
+              "properties": {
+                "route": {
+                  "type": "keyword"
+                },
+                "request": {
+                  "properties": {
+                    "method": {
+                      "type": "keyword"
+                    }
+                  }
+                },
+                "response": {
+                  "properties": {
+                    "status_code": {
+                      "type": "long"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "composed_of": [],
+  "version": 1
+}

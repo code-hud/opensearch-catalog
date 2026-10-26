@@ -1,0 +1,144 @@
+[
+  {
+    "time": "2026-10-26T11:38:56.069Z",
+    "observedTimestamp": "2026-10-26T11:38:59.487Z",
+    "severityText": "ERROR",
+    "severityNumber": 17,
+    "body": "{\"status\":2,\"context\":{\"type\":\"http\",\"endpoint_uuid\":\"7cc19ccc-025a-560e-b70f-3e4369e79aff\",\"status_code\":500,\"route\":\"/db/sqlite/slow-timeout\",\"method\":\"GET\",\"params\":{\"[hud:count]\":0},\"query\":{\"[hud:count]\":12,\"ms\":\"50\",\"duration\":\"500\",\"hold\":\"200\",\"mb\":\"10\",\"threads\":\"1\",\"depth\":\"5\",\"count\":\"10\",\"rows\":\"1000\",\"flavor\":\"esm\",\"term\":\"a\"},\"request_body\":{\"[hud:count]\":0},\"response_body\":{\"[hud:count]\":3,\"statusCode\":500,\"error\":\"QueryDeadlineExceededError\",\"message\":\"query took 9ms, exceeding its 5ms deadline\"},\"extra_headers\":{},\"flow_id\":\"7cc19ccc-025a-560e-b70f-3e4369e79aff\",\"timestamp\":1793014736069,\"system_info\":{\"pod_name\":\"2f88500a716c\"},\"machine_metrics\":{\"cpu_usage\":{\"user_time\":0.12342910809500728,\"system_time\":0.006933773630634997,\"limit\":2,\"user_percent_of_limit\":12.342910809500728,\"system_percent_of_limit\":0.6933773630634997,\"limited_cpu_user_percentage\":6.171455404750364,\"limited_cpu_system_percentage\":0.34668868153174986},\"memory_usage\":{\"rss\":301965312,\"heap_total\":54874112,\"heap_used\":41545392,\"external\":5234052,\"system_memory\":1073741824,\"rss_percentage\":28.122711181640625},\"event_loop_utilization\":0.16199791407728287},\"observability_identifiers\":{\"w3c_trace_context\":{},\"w3c_baggage\":\"hud-context=seeding-node-4%3A%3A%7Cseeding-node-4%3A%3A\",\"b3_propagation\":{}},\"distributed_context\":[{\"parent\":{\"service_name\":\"seeding-node-4\"},\"root\":{\"service_name\":\"seeding-node-4\"}}],\"session_id\":\"f733f3fa-3355-4cba-b181-51ee0b74dc70\"},\"triggerType\":\"Error\",\"duration\":11150139,\"caught\":false,\"exceptions\":[{\"name\":\"QueryDeadlineExceededError\",\"message\":\"query took 9ms, exceeding its 5ms deadline\",\"stackTrace\":\"    at ProductDao.slowTimeout (/app/product.dao.ts:80:13)\\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)\\n    at async /app/node_modules/@nestjs/core/router/router-execution-context.js:46:28\\n    at async /app/node_modules/@nestjs/core/router/router-proxy.js:9:17\",\"executionFlow\":[{\"function\":{\"code.function.name\":\"__commonJS()#4 > [\\\"src/db/product.dao.ts\\\"] > ProductDao.slowTimeout\",\"hud.function.content_hash\":\"4098156954\",\"hud.function.kind\":\"method\",\"hud.function.short_name\":\"ProductDao.slowTimeout\",\"code.file.path\":\"/app/product.dao.ts\",\"hud.function.scope\":\"__commonJS()#4 > [\\\"src/db/product.dao.ts\\\"]\"},\"caller\":{\"code.function.name\":\"__commonJS()#5 > [\\\"src/db/db.controller.ts\\\"] > DbController.slowTimeout\",\"hud.function.content_hash\":\"1841728481\",\"hud.function.kind\":\"method\",\"hud.function.short_name\":\"DbController.slowTimeout\",\"code.file.path\":\"/app/db.controller.ts\",\"hud.function.scope\":\"__commonJS()#5 > [\\\"src/db/db.controller.ts\\\"]\"}}],\"caught\":false}],\"lastExceptions\":[],\"totalExceptionsCount\":1,\"outbounds\":[],\"totalOutboundsCount\":0,\"outboundAggregation\":[],\"version\":\"1.0.2\",\"errorBreakdown\":{\"key\":\"false|500||QueryDeadlineExceededError-Ppi78M3ZVXuTE93cxoxuDA\",\"errors\":[{\"function\":{\"code.function.name\":\"__commonJS()#4 > [\\\"src/db/product.dao.ts\\\"] > ProductDao.slowTimeout\",\"hud.function.content_hash\":\"4098156954\",\"hud.function.kind\":\"method\",\"hud.function.short_name\":\"ProductDao.slowTimeout\",\"code.file.path\":\"/app/product.dao.ts\",\"hud.function.scope\":\"__commonJS()#4 > [\\\"src/db/product.dao.ts\\\"]\"},\"error_type\":\"QueryDeadlineExceededError\"}],\"caught\":false,\"framework_result\":\"500\"}}",
+    "traceId": "",
+    "spanId": "",
+    "flags": 0,
+    "droppedAttributesCount": 0,
+    "schemaUrl": "",
+    "instrumentationScope": {
+      "name": "hud-sdk",
+      "version": "1.11.1",
+      "droppedAttributesCount": 0
+    },
+    "resource": {
+      "schemaUrl": "",
+      "droppedAttributesCount": 0,
+      "attributes": {
+        "service.name": "seeding-node-4",
+        "service.instance.id": "5a7aca92-39fd-4947-8925-04806ebb04fb",
+        "telemetry.sdk.name": "hud-sdk",
+        "telemetry.sdk.language": "nodejs",
+        "telemetry.sdk.version": "1.11.1",
+        "process.runtime.name": "nodejs",
+        "process.runtime.version": "20.20.2",
+        "process.pid": 1,
+        "os.type": "linux",
+        "host.arch": "arm64",
+        "hud.identity.version": "1"
+      }
+    },
+    "attributes": {
+      "hud.forensic.type": "error",
+      "hud.forensic.version": "1.0.2",
+      "hud.issue.fingerprint": "280e96d80c71f6c6",
+      "hud.issue.caught": false,
+      "hud.issue.framework_result": "500",
+      "hud.issue.sources": [
+        "QueryDeadlineExceededError@/app/product.dao.ts:__commonJS()#4 > [\"src/db/product.dao.ts\"] > ProductDao.slowTimeout"
+      ],
+      "code.flow.name": "http|/db/sqlite/slow-timeout|get",
+      "code.flow.type": "http",
+      "http.route": "/db/sqlite/slow-timeout",
+      "http.request.method": "GET",
+      "http.response.status_code": 500,
+      "hud.endpoint.methods": "get"
+    }
+  },
+  {
+    "time": "2026-10-26T11:36:19.514Z",
+    "observedTimestamp": "2026-10-26T11:36:32.557Z",
+    "severityText": "ERROR",
+    "severityNumber": 17,
+    "body": "{\"status\":2,\"context\":{\"type\":\"http\",\"endpoint_uuid\":\"ef3f558f-aab4-5bd1-96d0-269155787418\",\"status_code\":500,\"route\":\"/db/sqlite/insert-null\",\"method\":\"GET\",\"params\":{\"[hud:count]\":0},\"query\":{\"[hud:count]\":12,\"ms\":\"50\",\"duration\":\"500\",\"hold\":\"200\",\"mb\":\"10\",\"threads\":\"1\",\"depth\":\"5\",\"count\":\"10\",\"rows\":\"1000\",\"flavor\":\"esm\",\"term\":\"a\"},\"request_body\":{\"[hud:count]\":0},\"response_body\":{\"[hud:count]\":3,\"statusCode\":500,\"error\":\"PrismaClientKnownRequestError\",\"message\":\"\\nInvalid `prisma.$executeRawUnsafe()` invocation:\\n\\n\\nRaw query failed. Code: `SQLITE_CONSTRAINT_NOTNULL`. Message: `NOT NULL constraint failed: product.name`\"},\"extra_headers\":{},\"flow_id\":\"ef3f558f-aab4-5bd1-96d0-269155787418\",\"timestamp\":1793014579514,\"system_info\":{\"pod_name\":\"590b078754ca\"},\"machine_metrics\":{\"cpu_usage\":{\"user_time\":0.09815796156287875,\"system_time\":0.0101751601546719,\"limit\":2,\"user_percent_of_limit\":9.815796156287874,\"system_percent_of_limit\":1.0175160154671898,\"limited_cpu_user_percentage\":4.907898078143937,\"limited_cpu_system_percentage\":0.5087580077335949},\"memory_usage\":{\"rss\":241577984,\"heap_total\":43528192,\"heap_used\":37227744,\"external\":4935196,\"system_memory\":1073741824,\"rss_percentage\":22.498703002929688},\"event_loop_utilization\":0.13569216437188236},\"observability_identifiers\":{\"w3c_trace_context\":{},\"w3c_baggage\":\"hud-context=seeding-node-6%3A%3A%7Cseeding-node-6%3A%3A\",\"b3_propagation\":{}},\"distributed_context\":[{\"parent\":{\"service_name\":\"seeding-node-6\"},\"root\":{\"service_name\":\"seeding-node-6\"}}],\"session_id\":\"450e4a77-50f8-4bad-9512-7ce10058e717\"},\"triggerType\":\"Error\",\"duration\":331864802,\"caught\":true,\"exceptions\":[],\"lastExceptions\":[],\"outbounds\":[],\"totalOutboundsCount\":0,\"outboundAggregation\":[],\"version\":\"1.0.2\",\"errorBreakdown\":{\"key\":\"true|500|\",\"errors\":[],\"caught\":true,\"framework_result\":\"500\"}}",
+    "traceId": "",
+    "spanId": "",
+    "flags": 0,
+    "droppedAttributesCount": 0,
+    "schemaUrl": "",
+    "instrumentationScope": {
+      "name": "hud-sdk",
+      "version": "1.11.1",
+      "droppedAttributesCount": 0
+    },
+    "resource": {
+      "schemaUrl": "",
+      "droppedAttributesCount": 0,
+      "attributes": {
+        "service.name": "seeding-node-6",
+        "service.instance.id": "1445784c-c38d-41a8-b99c-eb5b51ba17e0",
+        "telemetry.sdk.name": "hud-sdk",
+        "telemetry.sdk.language": "nodejs",
+        "telemetry.sdk.version": "1.11.1",
+        "process.runtime.name": "nodejs",
+        "process.runtime.version": "20.20.2",
+        "process.pid": 1,
+        "os.type": "linux",
+        "host.arch": "arm64",
+        "hud.identity.version": "1"
+      }
+    },
+    "attributes": {
+      "hud.forensic.type": "error",
+      "hud.forensic.version": "1.0.2",
+      "hud.issue.fingerprint": "ab0524de070419ef",
+      "hud.issue.caught": true,
+      "hud.issue.framework_result": "500",
+      "hud.issue.sources": [],
+      "code.flow.name": "http|/db/sqlite/insert-null|get",
+      "code.flow.type": "http",
+      "http.route": "/db/sqlite/insert-null",
+      "http.request.method": "GET",
+      "http.response.status_code": 500,
+      "hud.endpoint.methods": "get"
+    }
+  },
+  {
+    "time": "2026-10-26T11:40:01.022Z",
+    "observedTimestamp": "2026-10-26T11:40:04.110Z",
+    "severityText": "ERROR",
+    "severityNumber": 17,
+    "body": "{\"status\":2,\"context\":{\"type\":\"http\",\"endpoint_uuid\":\"0b2c7e51-6d3a-5f8e-9c41-2d7a8e1f3b60\",\"status_code\":200,\"route\":\"/db/sqlite/slow-query\",\"method\":\"GET\",\"params\":{\"[hud:count]\":0},\"query\":{\"[hud:count]\":12,\"ms\":\"50\",\"duration\":\"500\",\"hold\":\"200\",\"mb\":\"10\",\"threads\":\"1\",\"depth\":\"5\",\"count\":\"10\",\"rows\":\"1000\",\"flavor\":\"esm\",\"term\":\"a\"},\"request_body\":{\"[hud:count]\":0},\"response_body\":{\"[hud:count]\":1,\"rows\":1000},\"extra_headers\":{},\"flow_id\":\"0b2c7e51-6d3a-5f8e-9c41-2d7a8e1f3b60\",\"timestamp\":1793014801022,\"system_info\":{\"pod_name\":\"2f88500a716c\"},\"machine_metrics\":{\"cpu_usage\":{\"user_time\":0.21,\"system_time\":0.012,\"limit\":2,\"user_percent_of_limit\":21.0,\"system_percent_of_limit\":1.2,\"limited_cpu_user_percentage\":10.5,\"limited_cpu_system_percentage\":0.6},\"memory_usage\":{\"rss\":305123328,\"heap_total\":54874112,\"heap_used\":43212800,\"external\":5234052,\"system_memory\":1073741824,\"rss_percentage\":28.416824340820312},\"event_loop_utilization\":0.41},\"observability_identifiers\":{\"w3c_trace_context\":{},\"w3c_baggage\":\"hud-context=seeding-node-4%3A%3A%7Cseeding-node-4%3A%3A\",\"b3_propagation\":{}},\"distributed_context\":[{\"parent\":{\"service_name\":\"seeding-node-4\"},\"root\":{\"service_name\":\"seeding-node-4\"}}],\"session_id\":\"f733f3fa-3355-4cba-b181-51ee0b74dc70\"},\"triggerType\":\"Duration\",\"duration\":2314558901,\"durationThreshold\":1000000000,\"caught\":false,\"exceptions\":[],\"lastExceptions\":[],\"totalExceptionsCount\":0,\"outbounds\":[],\"totalOutboundsCount\":0,\"outboundAggregation\":[],\"version\":\"1.0.2\"}",
+    "traceId": "4bf92f3577b34da6a3ce929d0e0e4736",
+    "spanId": "",
+    "flags": 0,
+    "droppedAttributesCount": 0,
+    "schemaUrl": "",
+    "instrumentationScope": {
+      "name": "hud-sdk",
+      "version": "1.11.1",
+      "droppedAttributesCount": 0
+    },
+    "resource": {
+      "schemaUrl": "",
+      "droppedAttributesCount": 0,
+      "attributes": {
+        "service.name": "seeding-node-4",
+        "service.instance.id": "5a7aca92-39fd-4947-8925-04806ebb04fb",
+        "telemetry.sdk.name": "hud-sdk",
+        "telemetry.sdk.language": "nodejs",
+        "telemetry.sdk.version": "1.11.1",
+        "process.runtime.name": "nodejs",
+        "process.runtime.version": "20.20.2",
+        "process.pid": 1,
+        "os.type": "linux",
+        "host.arch": "arm64",
+        "hud.identity.version": "1"
+      }
+    },
+    "attributes": {
+      "hud.forensic.type": "duration",
+      "hud.forensic.version": "1.0.2",
+      "code.flow.name": "http|/db/sqlite/slow-query|get",
+      "code.flow.type": "http",
+      "http.route": "/db/sqlite/slow-query",
+      "http.request.method": "GET",
+      "http.response.status_code": 200,
+      "hud.endpoint.methods": "get"
+    }
+  }
+]
