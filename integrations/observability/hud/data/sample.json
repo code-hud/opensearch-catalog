@@ -1,0 +1,443 @@
+[
+  {
+    "time": "2026-11-09T13:38:53.685Z",
+    "observedTimestamp": "2026-11-09T13:39:09.100Z",
+    "severityText": "ERROR",
+    "severityNumber": 17,
+    "body": "{\"status\":2,\"context\":{\"type\":\"http\",\"endpoint_uuid\":\"cf87e38b-b6f1-5dbc-8b9e-c10d30a2d1aa\",\"status_code\":503,\"route\":\"/checkout\",\"params\":{\"[hud:count]\":0},\"query\":{\"[hud:count]\":0},\"request_body\":{\"[hud:count]\":3,\"sku\":\"SKU-2002\",\"qty\":1,\"amount\":30},\"response_body\":{\"[hud:count]\":3,\"statusCode\":503,\"error\":\"StockUnavailableError\",\"message\":\"reservation for SKU-2002 failed with 503\"},\"method\":\"POST\",\"extra_headers\":{},\"flow_id\":\"cf87e38b-b6f1-5dbc-8b9e-c10d30a2d1aa\",\"timestamp\":1794231533685,\"system_info\":{\"pod_name\":\"storefront-api-6d8f9c7b5-q4wzn\",\"node_name\":\"node-pool-general-7f3a\"},\"machine_metrics\":{\"cpu_usage\":{\"user_time\":0.011903802672147995,\"system_time\":0.0015155875299760191,\"limit\":4,\"user_percent_of_limit\":1.1903802672147994,\"system_percent_of_limit\":0.1515587529976019,\"limited_cpu_user_percentage\":0.29759506680369985,\"limited_cpu_system_percentage\":0.03788968824940048},\"memory_usage\":{\"rss\":115527680,\"heap_total\":20160512,\"heap_used\":18270296,\"external\":3872631,\"system_memory\":16780361728,\"rss_percentage\":0.688469544772855},\"event_loop_utilization\":0.003975927990606948},\"observability_identifiers\":{\"w3c_trace_context\":{\"traceparent\":\"00-9b98c30552d929847b70d9ab890ce213-9ec951013d130364-01\"},\"b3_propagation\":{}},\"session_id\":\"8dc43c6b-94b3-4dbb-b082-ba94052073da\"},\"triggerType\":\"Error\",\"duration\":5881410,\"durationThreshold\":1000000000,\"caught\":true,\"exceptions\":[],\"lastExceptions\":[],\"outbounds\":[{\"function\":{\"code.function.name\":\"Axios.request\",\"hud.function.content_hash\":\"c9422980\",\"hud.function.kind\":\"method\",\"hud.function.short_name\":\"Axios.request\",\"hud.function.third_party_module\":\"axios\"},\"caller_id\":\"\",\"type\":\"http\",\"index\":0,\"tag\":\"first\",\"duration\":4506891,\"timestamp\":1794231533686,\"args\":{\"[hud:count]\":4,\"url\":\"http://inventory-svc:8080/stock/reserve\",\"method\":\"post\",\"body\":{\"[hud:count]\":2,\"sku\":\"SKU-2002\",\"qty\":1},\"bodySize\":26},\"result\":{\"[hud:count]\":3,\"status_code\":503,\"body\":{\"[hud:count]\":3,\"statusCode\":503,\"error\":\"StockUnavailableError\",\"message\":\"only 0 units of SKU-2002 left, 1 requested\"},\"bodySize\":105}}],\"totalOutboundsCount\":1,\"outboundAggregation\":[{\"framework\":\"axios\",\"count\":1,\"sum_duration\":4506891,\"sum_squared_duration\":20312066485881,\"sketch\":{\"binWidth\":1.2,\"indexShift\":84,\"data\":[1]},\"exceptions\":{}}],\"version\":\"1.0.2\",\"errorBreakdown\":{\"errors\":[],\"caught\":true,\"framework_result\":\"503\"}}",
+    "traceId": "9b98c30552d929847b70d9ab890ce213",
+    "spanId": "",
+    "flags": 0,
+    "droppedAttributesCount": 0,
+    "schemaUrl": "",
+    "instrumentationScope": {
+      "name": "hud-sdk",
+      "version": "1.12.1",
+      "droppedAttributesCount": 0
+    },
+    "resource": {
+      "schemaUrl": "",
+      "droppedAttributesCount": 0,
+      "attributes": {
+        "service.name": "storefront-api",
+        "service.instance.id": "8dc43c6b-94b3-4dbb-b082-ba94052073da",
+        "deployment.environment.name": "production",
+        "telemetry.sdk.name": "hud-sdk",
+        "telemetry.sdk.language": "nodejs",
+        "telemetry.sdk.version": "1.12.1",
+        "process.runtime.name": "nodejs",
+        "process.runtime.version": "22.23.4",
+        "process.pid": 1,
+        "os.type": "linux",
+        "host.arch": "amd64",
+        "hud.identity.version": "1"
+      }
+    },
+    "attributes": {
+      "hud.forensic.type": "error",
+      "hud.forensic.version": "1.0.2",
+      "issue.fingerprint": "225ec72a8bf5c7ee",
+      "hud.issue.caught": true,
+      "hud.issue.framework_result": "503",
+      "hud.issue.sources": [],
+      "code.flow.name": "http|/checkout|post",
+      "code.flow.type": "http",
+      "http.route": "/checkout",
+      "http.request.method": "POST",
+      "http.response.status_code": 503,
+      "hud.endpoint.methods": "post"
+    }
+  },
+  {
+    "time": "2026-11-09T13:38:53.687Z",
+    "observedTimestamp": "2026-11-09T13:39:09.102Z",
+    "severityText": "ERROR",
+    "severityNumber": 17,
+    "body": "{\"status\":2,\"context\":{\"type\":\"http\",\"endpoint_uuid\":\"59cdfd71-08e4-5e6e-a2fa-68067647ad32\",\"status_code\":503,\"route\":\"/stock/reserve\",\"params\":{\"[hud:count]\":0},\"query\":{\"[hud:count]\":0},\"request_body\":{\"[hud:count]\":2,\"sku\":\"SKU-2002\",\"qty\":1},\"response_body\":{\"[hud:count]\":3,\"statusCode\":503,\"error\":\"StockUnavailableError\",\"message\":\"only 0 units of SKU-2002 left, 1 requested\"},\"method\":\"POST\",\"extra_headers\":{},\"flow_id\":\"59cdfd71-08e4-5e6e-a2fa-68067647ad32\",\"timestamp\":1794231533687,\"system_info\":{\"pod_name\":\"inventory-svc-5b7c4d9f8-m2kxr\",\"node_name\":\"node-pool-general-7f3a\"},\"machine_metrics\":{\"cpu_usage\":{\"user_time\":0.008317776864035087,\"system_time\":0.0004794407894736842,\"limit\":4,\"user_percent_of_limit\":0.8317776864035087,\"system_percent_of_limit\":0.04794407894736842,\"limited_cpu_user_percentage\":0.20794442160087717,\"limited_cpu_system_percentage\":0.011986019736842105},\"memory_usage\":{\"rss\":131637248,\"heap_total\":56598528,\"heap_used\":21164688,\"external\":3884333,\"system_memory\":16780361728,\"rss_percentage\":0.7844720521152284},\"event_loop_utilization\":0.0024568183969399214},\"observability_identifiers\":{\"w3c_trace_context\":{},\"w3c_baggage\":\"hud-context-v2=p%3Dstorefront-api~http%257C%2Fcheckout%257Cpost%3Br%3Dstorefront-api~http%257C%2Fcheckout%257Cpost\",\"b3_propagation\":{}},\"distributed_context\":[{\"parent\":{\"service_name\":\"storefront-api\",\"endpoint\":\"http|/checkout|post\"},\"root\":{\"service_name\":\"storefront-api\",\"endpoint\":\"http|/checkout|post\"}}],\"session_id\":\"dc2dbc47-3fff-4eab-a621-8ed9ff04e59e\"},\"triggerType\":\"Error\",\"duration\":3138554,\"caught\":false,\"exceptions\":[{\"name\":\"StockUnavailableError\",\"message\":\"only 0 units of SKU-2002 left, 1 requested\",\"stackTrace\":\"    at StockService.reserve (/app/src/stock.service.js:23:13)\\n    at processTicksAndRejections (node:internal/process/task_queues:103:5)\\n    at async /app/src/app.js:64:64\",\"executionFlow\":[{\"function\":{\"code.function.name\":\"StockService.reserve\",\"hud.function.content_hash\":\"1016886118\",\"hud.function.kind\":\"method\",\"hud.function.short_name\":\"StockService.reserve\",\"code.file.path\":\"/app/src/stock.service.js\"},\"caller_id\":\"\"}],\"caught\":false}],\"lastExceptions\":[],\"totalExceptionsCount\":1,\"outbounds\":[{\"function\":{\"code.function.name\":\"Redis.get\",\"hud.function.content_hash\":\"65372196\",\"hud.function.kind\":\"method\",\"hud.function.short_name\":\"Redis.get\",\"hud.function.third_party_module\":\"ioredis\"},\"caller\":{\"code.function.name\":\"StockService.reserve\",\"hud.function.content_hash\":\"1016886118\",\"hud.function.kind\":\"method\",\"hud.function.short_name\":\"StockService.reserve\",\"code.file.path\":\"/app/src/stock.service.js\"},\"type\":\"redis\",\"index\":0,\"tag\":\"first\",\"duration\":451704,\"timestamp\":1794231533688,\"args\":{\"[hud:count]\":4,\"command\":\"get\",\"key\":\"stock:level:SKU-2002\",\"args\":[],\"argsCount\":1},\"result\":{\"[hud:count]\":2,\"valueType\":\"null\"}},{\"function\":{\"code.function.name\":\"Redis.set\",\"hud.function.content_hash\":\"ae505525\",\"hud.function.kind\":\"method\",\"hud.function.short_name\":\"Redis.set\",\"hud.function.third_party_module\":\"ioredis\"},\"caller\":{\"code.function.name\":\"StockService.reserve\",\"hud.function.content_hash\":\"1016886118\",\"hud.function.kind\":\"method\",\"hud.function.short_name\":\"StockService.reserve\",\"code.file.path\":\"/app/src/stock.service.js\"},\"type\":\"redis\",\"index\":1,\"tag\":\"first\",\"duration\":311642,\"timestamp\":1794231533689,\"args\":{\"[hud:count]\":4,\"command\":\"set\",\"key\":\"stock:level:SKU-2002\",\"args\":[\"0\",\"EX\",\"60\"],\"argsCount\":4},\"result\":{\"[hud:count]\":2,\"valueType\":\"string\",\"valueSize\":2}}],\"totalOutboundsCount\":2,\"outboundAggregation\":[{\"framework\":\"ioredis\",\"count\":2,\"sum_duration\":763346,\"sum_squared_duration\":301157239780,\"sketch\":{\"binWidth\":1.2,\"indexShift\":69,\"data\":[1,0,1]},\"exceptions\":{}}],\"version\":\"1.0.2\",\"errorBreakdown\":{\"errors\":[{\"function\":{\"code.function.name\":\"StockService.reserve\",\"hud.function.content_hash\":\"1016886118\",\"hud.function.kind\":\"method\",\"hud.function.short_name\":\"StockService.reserve\",\"code.file.path\":\"/app/src/stock.service.js\"},\"error_type\":\"StockUnavailableError\"}],\"caught\":false,\"framework_result\":\"503\"}}",
+    "traceId": "",
+    "spanId": "",
+    "flags": 0,
+    "droppedAttributesCount": 0,
+    "schemaUrl": "",
+    "instrumentationScope": {
+      "name": "hud-sdk",
+      "version": "1.12.1",
+      "droppedAttributesCount": 0
+    },
+    "resource": {
+      "schemaUrl": "",
+      "droppedAttributesCount": 0,
+      "attributes": {
+        "service.name": "inventory-svc",
+        "service.instance.id": "dc2dbc47-3fff-4eab-a621-8ed9ff04e59e",
+        "deployment.environment.name": "production",
+        "telemetry.sdk.name": "hud-sdk",
+        "telemetry.sdk.language": "nodejs",
+        "telemetry.sdk.version": "1.12.1",
+        "process.runtime.name": "nodejs",
+        "process.runtime.version": "22.23.4",
+        "process.pid": 1,
+        "os.type": "linux",
+        "host.arch": "amd64",
+        "hud.identity.version": "1"
+      }
+    },
+    "attributes": {
+      "hud.forensic.type": "error",
+      "hud.forensic.version": "1.0.2",
+      "issue.fingerprint": "f4cc859b793aede5",
+      "hud.issue.caught": false,
+      "hud.issue.framework_result": "503",
+      "hud.issue.sources": [
+        "StockUnavailableError@/app/src/stock.service.js:StockService.reserve"
+      ],
+      "code.flow.name": "http|/stock/reserve|post",
+      "code.flow.type": "http",
+      "http.route": "/stock/reserve",
+      "http.request.method": "POST",
+      "http.response.status_code": 503,
+      "hud.endpoint.methods": "post",
+      "hud.parent.service.name": "storefront-api",
+      "hud.parent.flow.name": "http|/checkout|post",
+      "hud.root.service.name": "storefront-api",
+      "hud.root.flow.name": "http|/checkout|post"
+    }
+  },
+  {
+    "time": "2026-11-09T13:38:53.706Z",
+    "observedTimestamp": "2026-11-09T13:39:09.101Z",
+    "severityText": "ERROR",
+    "severityNumber": 17,
+    "body": "{\"status\":2,\"context\":{\"type\":\"http\",\"endpoint_uuid\":\"cf87e38b-b6f1-5dbc-8b9e-c10d30a2d1aa\",\"status_code\":502,\"route\":\"/checkout\",\"params\":{\"[hud:count]\":0},\"query\":{\"[hud:count]\":0},\"request_body\":{\"[hud:count]\":3,\"sku\":\"SKU-3003\",\"qty\":2,\"amount\":900},\"response_body\":{\"[hud:count]\":2,\"order\":\"created\",\"charge\":{\"[hud:count]\":3,\"statusCode\":504,\"error\":\"LedgerTimeoutError\",\"message\":\"ledger write for amount 900 exceeded its 250ms deadline\"}},\"method\":\"POST\",\"extra_headers\":{},\"flow_id\":\"cf87e38b-b6f1-5dbc-8b9e-c10d30a2d1aa\",\"timestamp\":1794231533706,\"system_info\":{\"pod_name\":\"storefront-api-6d8f9c7b5-q4wzn\",\"node_name\":\"node-pool-general-7f3a\"},\"machine_metrics\":{\"cpu_usage\":{\"user_time\":0.012357980827244083,\"system_time\":0.0014828718911309244,\"limit\":4,\"user_percent_of_limit\":1.2357980827244084,\"system_percent_of_limit\":0.14828718911309244,\"limited_cpu_user_percentage\":0.3089495206811021,\"limited_cpu_system_percentage\":0.03707179727827311},\"memory_usage\":{\"rss\":115920896,\"heap_total\":20422656,\"heap_used\":18674056,\"external\":3872824,\"system_memory\":16780361728,\"rss_percentage\":0.6908128554021121},\"event_loop_utilization\":0.004394840630023757},\"observability_identifiers\":{\"w3c_trace_context\":{\"traceparent\":\"00-d1d2422953cc5cba392187f25e13c4a8-d05fb040a5c4af56-01\"},\"b3_propagation\":{}},\"session_id\":\"8dc43c6b-94b3-4dbb-b082-ba94052073da\"},\"triggerType\":\"Error\",\"duration\":307483650,\"durationThreshold\":1000000000,\"caught\":true,\"exceptions\":[],\"lastExceptions\":[],\"outbounds\":[{\"function\":{\"code.function.name\":\"Axios.request\",\"hud.function.content_hash\":\"c9422980\",\"hud.function.kind\":\"method\",\"hud.function.short_name\":\"Axios.request\",\"hud.function.third_party_module\":\"axios\"},\"caller_id\":\"\",\"type\":\"http\",\"index\":0,\"tag\":\"first\",\"duration\":2979786,\"timestamp\":1794231533707,\"args\":{\"[hud:count]\":4,\"url\":\"http://inventory-svc:8080/stock/reserve\",\"method\":\"post\",\"body\":{\"[hud:count]\":2,\"sku\":\"SKU-3003\",\"qty\":2},\"bodySize\":26},\"result\":{\"[hud:count]\":3,\"status_code\":200,\"body\":{\"[hud:count]\":2,\"sku\":\"SKU-3003\",\"reserved\":2},\"bodySize\":31}},{\"function\":{\"code.function.name\":\"Axios.request\",\"hud.function.content_hash\":\"c9422980\",\"hud.function.kind\":\"method\",\"hud.function.short_name\":\"Axios.request\",\"hud.function.third_party_module\":\"axios\"},\"caller_id\":\"\",\"type\":\"http\",\"index\":1,\"tag\":\"first\",\"duration\":303491246,\"timestamp\":1794231533710,\"args\":{\"[hud:count]\":4,\"url\":\"http://payments-ledger:8080/ledger/charge\",\"method\":\"post\",\"body\":{\"[hud:count]\":1,\"amount\":900},\"bodySize\":14},\"result\":{\"[hud:count]\":3,\"status_code\":504,\"body\":{\"[hud:count]\":3,\"statusCode\":504,\"error\":\"LedgerTimeoutError\",\"message\":\"ledger write for amount 900 exceeded its 250ms deadline\"},\"bodySize\":115}}],\"totalOutboundsCount\":2,\"outboundAggregation\":[{\"framework\":\"axios\",\"count\":2,\"sum_duration\":306471032,\"sum_squared_duration\":92115815523238300,\"sketch\":{\"binWidth\":1.2,\"indexShift\":81,\"data\":[1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1]},\"exceptions\":{}}],\"version\":\"1.0.2\",\"errorBreakdown\":{\"errors\":[],\"caught\":true,\"framework_result\":\"502\"}}",
+    "traceId": "d1d2422953cc5cba392187f25e13c4a8",
+    "spanId": "",
+    "flags": 0,
+    "droppedAttributesCount": 0,
+    "schemaUrl": "",
+    "instrumentationScope": {
+      "name": "hud-sdk",
+      "version": "1.12.1",
+      "droppedAttributesCount": 0
+    },
+    "resource": {
+      "schemaUrl": "",
+      "droppedAttributesCount": 0,
+      "attributes": {
+        "service.name": "storefront-api",
+        "service.instance.id": "8dc43c6b-94b3-4dbb-b082-ba94052073da",
+        "deployment.environment.name": "production",
+        "telemetry.sdk.name": "hud-sdk",
+        "telemetry.sdk.language": "nodejs",
+        "telemetry.sdk.version": "1.12.1",
+        "process.runtime.name": "nodejs",
+        "process.runtime.version": "22.23.4",
+        "process.pid": 1,
+        "os.type": "linux",
+        "host.arch": "amd64",
+        "hud.identity.version": "1"
+      }
+    },
+    "attributes": {
+      "hud.forensic.type": "error",
+      "hud.forensic.version": "1.0.2",
+      "issue.fingerprint": "5497251dcd1532c8",
+      "hud.issue.caught": true,
+      "hud.issue.framework_result": "502",
+      "hud.issue.sources": [],
+      "code.flow.name": "http|/checkout|post",
+      "code.flow.type": "http",
+      "http.route": "/checkout",
+      "http.request.method": "POST",
+      "http.response.status_code": 502,
+      "hud.endpoint.methods": "post"
+    }
+  },
+  {
+    "time": "2026-11-09T13:38:53.711Z",
+    "observedTimestamp": "2026-11-09T13:39:09.101Z",
+    "severityText": "ERROR",
+    "severityNumber": 17,
+    "body": "{\"status\":2,\"context\":{\"type\":\"http\",\"endpoint_uuid\":\"2c5fabb5-0a1f-532e-bdb4-7dedc7814462\",\"status_code\":504,\"route\":\"/ledger/charge\",\"params\":{\"[hud:count]\":0},\"query\":{\"[hud:count]\":0},\"request_body\":{\"[hud:count]\":1,\"amount\":900},\"response_body\":{\"[hud:count]\":3,\"statusCode\":504,\"error\":\"LedgerTimeoutError\",\"message\":\"ledger write for amount 900 exceeded its 250ms deadline\"},\"method\":\"POST\",\"extra_headers\":{},\"flow_id\":\"2c5fabb5-0a1f-532e-bdb4-7dedc7814462\",\"timestamp\":1794231533711,\"system_info\":{\"pod_name\":\"payments-ledger-84c6f5d7b-t9hvp\",\"node_name\":\"node-pool-general-2c1e\"},\"machine_metrics\":{\"cpu_usage\":{\"user_time\":0.01088488099228964,\"system_time\":0.0015238350653704325,\"limit\":4,\"user_percent_of_limit\":1.088488099228964,\"system_percent_of_limit\":0.15238350653704325,\"limited_cpu_user_percentage\":0.272122024807241,\"limited_cpu_system_percentage\":0.03809587663426081},\"memory_usage\":{\"rss\":112087040,\"heap_total\":19898368,\"heap_used\":18011128,\"external\":3871856,\"system_memory\":16780361728,\"rss_percentage\":0.6679655767668562},\"event_loop_utilization\":0.003106882485730722},\"observability_identifiers\":{\"w3c_trace_context\":{},\"w3c_baggage\":\"hud-context-v2=p%3Dstorefront-api~http%257C%2Fcheckout%257Cpost%3Br%3Dstorefront-api~http%257C%2Fcheckout%257Cpost\",\"b3_propagation\":{}},\"distributed_context\":[{\"parent\":{\"service_name\":\"storefront-api\",\"endpoint\":\"http|/checkout|post\"},\"root\":{\"service_name\":\"storefront-api\",\"endpoint\":\"http|/checkout|post\"}}],\"session_id\":\"d20df457-9883-48a5-86b1-2f5709539037\"},\"triggerType\":\"Error\",\"duration\":301849431,\"durationThreshold\":1000000000,\"caught\":false,\"exceptions\":[{\"name\":\"LedgerTimeoutError\",\"message\":\"ledger write for amount 900 exceeded its 250ms deadline\",\"stackTrace\":\"    at LedgerClient.charge (/app/src/ledger.client.js:14:13)\\n    at async /app/src/app.js:70:64\",\"executionFlow\":[{\"function\":{\"code.function.name\":\"LedgerClient.charge\",\"hud.function.content_hash\":\"2575399068\",\"hud.function.kind\":\"method\",\"hud.function.short_name\":\"LedgerClient.charge\",\"code.file.path\":\"/app/src/ledger.client.js\"},\"caller_id\":\"\"}],\"caught\":false}],\"lastExceptions\":[],\"totalExceptionsCount\":1,\"outbounds\":[],\"totalOutboundsCount\":0,\"outboundAggregation\":[],\"version\":\"1.0.2\",\"errorBreakdown\":{\"errors\":[{\"function\":{\"code.function.name\":\"LedgerClient.charge\",\"hud.function.content_hash\":\"2575399068\",\"hud.function.kind\":\"method\",\"hud.function.short_name\":\"LedgerClient.charge\",\"code.file.path\":\"/app/src/ledger.client.js\"},\"error_type\":\"LedgerTimeoutError\"}],\"caught\":false,\"framework_result\":\"504\"}}",
+    "traceId": "",
+    "spanId": "",
+    "flags": 0,
+    "droppedAttributesCount": 0,
+    "schemaUrl": "",
+    "instrumentationScope": {
+      "name": "hud-sdk",
+      "version": "1.12.1",
+      "droppedAttributesCount": 0
+    },
+    "resource": {
+      "schemaUrl": "",
+      "droppedAttributesCount": 0,
+      "attributes": {
+        "service.name": "payments-ledger",
+        "service.instance.id": "d20df457-9883-48a5-86b1-2f5709539037",
+        "deployment.environment.name": "production",
+        "telemetry.sdk.name": "hud-sdk",
+        "telemetry.sdk.language": "nodejs",
+        "telemetry.sdk.version": "1.12.1",
+        "process.runtime.name": "nodejs",
+        "process.runtime.version": "22.23.4",
+        "process.pid": 1,
+        "os.type": "linux",
+        "host.arch": "amd64",
+        "hud.identity.version": "1"
+      }
+    },
+    "attributes": {
+      "hud.forensic.type": "error",
+      "hud.forensic.version": "1.0.2",
+      "issue.fingerprint": "4e9314ea37ad9467",
+      "hud.issue.caught": false,
+      "hud.issue.framework_result": "504",
+      "hud.issue.sources": [
+        "LedgerTimeoutError@/app/src/ledger.client.js:LedgerClient.charge"
+      ],
+      "code.flow.name": "http|/ledger/charge|post",
+      "code.flow.type": "http",
+      "http.route": "/ledger/charge",
+      "http.request.method": "POST",
+      "http.response.status_code": 504,
+      "hud.endpoint.methods": "post",
+      "hud.parent.service.name": "storefront-api",
+      "hud.parent.flow.name": "http|/checkout|post",
+      "hud.root.service.name": "storefront-api",
+      "hud.root.flow.name": "http|/checkout|post"
+    }
+  },
+  {
+    "time": "2026-11-09T13:38:54.020Z",
+    "observedTimestamp": "2026-11-09T13:39:09.101Z",
+    "severityText": "ERROR",
+    "severityNumber": 17,
+    "body": "{\"status\":2,\"context\":{\"type\":\"http\",\"endpoint_uuid\":\"ad0a7e76-30a7-52de-a112-c37ea76c0be2\",\"status_code\":200,\"route\":\"/catalog/search\",\"params\":{\"[hud:count]\":0},\"query\":{\"[hud:count]\":1,\"term\":\"desk lamp\"},\"request_body\":{\"[hud:count]\":0},\"response_body\":{\"[hud:count]\":1,\"rows\":25},\"method\":\"GET\",\"extra_headers\":{},\"flow_id\":\"ad0a7e76-30a7-52de-a112-c37ea76c0be2\",\"timestamp\":1794231534020,\"system_info\":{\"pod_name\":\"storefront-api-6d8f9c7b5-q4wzn\",\"node_name\":\"node-pool-general-7f3a\"},\"machine_metrics\":{\"cpu_usage\":{\"user_time\":0.010836559982094898,\"system_time\":0.0014146150402864815,\"limit\":4,\"user_percent_of_limit\":1.0836559982094898,\"system_percent_of_limit\":0.14146150402864816,\"limited_cpu_user_percentage\":0.27091399955237244,\"limited_cpu_system_percentage\":0.03536537600716204},\"memory_usage\":{\"rss\":116183040,\"heap_total\":21471232,\"heap_used\":19024688,\"external\":3872498,\"system_memory\":16780361728,\"rss_percentage\":0.6923750624882834},\"event_loop_utilization\":0.004350097040798937},\"observability_identifiers\":{\"w3c_trace_context\":{},\"b3_propagation\":{}},\"session_id\":\"8dc43c6b-94b3-4dbb-b082-ba94052073da\"},\"triggerType\":\"Duration\",\"duration\":2948913774,\"durationThreshold\":1000000000,\"caught\":true,\"exceptions\":[],\"lastExceptions\":[],\"outbounds\":[],\"totalOutboundsCount\":0,\"outboundAggregation\":[],\"version\":\"1.0.2\"}",
+    "traceId": "",
+    "spanId": "",
+    "flags": 0,
+    "droppedAttributesCount": 0,
+    "schemaUrl": "",
+    "instrumentationScope": {
+      "name": "hud-sdk",
+      "version": "1.12.1",
+      "droppedAttributesCount": 0
+    },
+    "resource": {
+      "schemaUrl": "",
+      "droppedAttributesCount": 0,
+      "attributes": {
+        "service.name": "storefront-api",
+        "service.instance.id": "8dc43c6b-94b3-4dbb-b082-ba94052073da",
+        "deployment.environment.name": "production",
+        "telemetry.sdk.name": "hud-sdk",
+        "telemetry.sdk.language": "nodejs",
+        "telemetry.sdk.version": "1.12.1",
+        "process.runtime.name": "nodejs",
+        "process.runtime.version": "22.23.4",
+        "process.pid": 1,
+        "os.type": "linux",
+        "host.arch": "amd64",
+        "hud.identity.version": "1"
+      }
+    },
+    "attributes": {
+      "hud.forensic.type": "duration",
+      "hud.forensic.version": "1.0.2",
+      "code.flow.name": "http|/catalog/search|get",
+      "code.flow.type": "http",
+      "http.route": "/catalog/search",
+      "http.request.method": "GET",
+      "http.response.status_code": 200,
+      "hud.endpoint.methods": "get"
+    }
+  },
+  {
+    "time": "2026-11-09T13:38:54.023Z",
+    "observedTimestamp": "2026-11-09T13:39:09.101Z",
+    "severityText": "ERROR",
+    "severityNumber": 17,
+    "body": "{\"status\":2,\"context\":{\"type\":\"http\",\"endpoint_uuid\":\"cf87e38b-b6f1-5dbc-8b9e-c10d30a2d1aa\",\"status_code\":200,\"route\":\"/checkout\",\"params\":{\"[hud:count]\":0},\"query\":{\"[hud:count]\":0},\"request_body\":{\"[hud:count]\":3,\"sku\":\"SKU-3003\",\"qty\":1,\"amount\":320},\"response_body\":{\"[hud:count]\":2,\"order\":\"created\",\"charge\":{\"[hud:count]\":2,\"charged\":320,\"currency\":\"USD\"}},\"method\":\"POST\",\"extra_headers\":{},\"flow_id\":\"cf87e38b-b6f1-5dbc-8b9e-c10d30a2d1aa\",\"timestamp\":1794231534023,\"system_info\":{\"pod_name\":\"storefront-api-6d8f9c7b5-q4wzn\",\"node_name\":\"node-pool-general-7f3a\"},\"machine_metrics\":{\"cpu_usage\":{\"user_time\":0.011373446929357472,\"system_time\":0.0014957993136906875,\"limit\":4,\"user_percent_of_limit\":1.1373446929357471,\"system_percent_of_limit\":0.14957993136906875,\"limited_cpu_user_percentage\":0.2843361732339368,\"limited_cpu_system_percentage\":0.03739498284226719},\"memory_usage\":{\"rss\":116183040,\"heap_total\":21471232,\"heap_used\":18967712,\"external\":3872498,\"system_memory\":16780361728,\"rss_percentage\":0.6923750624882834},\"event_loop_utilization\":0.004516478274968843},\"observability_identifiers\":{\"w3c_trace_context\":{\"traceparent\":\"00-0c658cb30c1e4ceb3a26b643d6fde058-9611a2d1278a7523-01\"},\"b3_propagation\":{}},\"session_id\":\"8dc43c6b-94b3-4dbb-b082-ba94052073da\"},\"triggerType\":\"Duration\",\"duration\":1975594343,\"durationThreshold\":1000000000,\"caught\":true,\"exceptions\":[],\"lastExceptions\":[],\"outbounds\":[{\"function\":{\"code.function.name\":\"Axios.request\",\"hud.function.content_hash\":\"c9422980\",\"hud.function.kind\":\"method\",\"hud.function.short_name\":\"Axios.request\",\"hud.function.third_party_module\":\"axios\"},\"caller_id\":\"\",\"type\":\"http\",\"index\":0,\"tag\":\"first\",\"duration\":3249151,\"timestamp\":1794231534024,\"args\":{\"[hud:count]\":4,\"url\":\"http://inventory-svc:8080/stock/reserve\",\"method\":\"post\",\"body\":{\"[hud:count]\":2,\"sku\":\"SKU-3003\",\"qty\":1},\"bodySize\":26},\"result\":{\"[hud:count]\":3,\"status_code\":200,\"body\":{\"[hud:count]\":2,\"sku\":\"SKU-3003\",\"reserved\":1},\"bodySize\":31}},{\"function\":{\"code.function.name\":\"Axios.request\",\"hud.function.content_hash\":\"c9422980\",\"hud.function.kind\":\"method\",\"hud.function.short_name\":\"Axios.request\",\"hud.function.third_party_module\":\"axios\"},\"caller_id\":\"\",\"type\":\"http\",\"index\":1,\"tag\":\"first\",\"duration\":1971422722,\"timestamp\":1794231534027,\"args\":{\"[hud:count]\":4,\"url\":\"http://payments-ledger:8080/ledger/charge\",\"method\":\"post\",\"body\":{\"[hud:count]\":1,\"amount\":320},\"bodySize\":14},\"result\":{\"[hud:count]\":3,\"status_code\":200,\"body\":{\"[hud:count]\":2,\"charged\":320,\"currency\":\"USD\"},\"bodySize\":32}}],\"totalOutboundsCount\":2,\"outboundAggregation\":[{\"framework\":\"axios\",\"count\":2,\"sum_duration\":1974671873,\"sum_squared_duration\":3886518105800110000,\"sketch\":{\"binWidth\":1.2,\"indexShift\":82,\"data\":[1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1]},\"exceptions\":{}}],\"version\":\"1.0.2\"}",
+    "traceId": "0c658cb30c1e4ceb3a26b643d6fde058",
+    "spanId": "",
+    "flags": 0,
+    "droppedAttributesCount": 0,
+    "schemaUrl": "",
+    "instrumentationScope": {
+      "name": "hud-sdk",
+      "version": "1.12.1",
+      "droppedAttributesCount": 0
+    },
+    "resource": {
+      "schemaUrl": "",
+      "droppedAttributesCount": 0,
+      "attributes": {
+        "service.name": "storefront-api",
+        "service.instance.id": "8dc43c6b-94b3-4dbb-b082-ba94052073da",
+        "deployment.environment.name": "production",
+        "telemetry.sdk.name": "hud-sdk",
+        "telemetry.sdk.language": "nodejs",
+        "telemetry.sdk.version": "1.12.1",
+        "process.runtime.name": "nodejs",
+        "process.runtime.version": "22.23.4",
+        "process.pid": 1,
+        "os.type": "linux",
+        "host.arch": "amd64",
+        "hud.identity.version": "1"
+      }
+    },
+    "attributes": {
+      "hud.forensic.type": "duration",
+      "hud.forensic.version": "1.0.2",
+      "code.flow.name": "http|/checkout|post",
+      "code.flow.type": "http",
+      "http.route": "/checkout",
+      "http.request.method": "POST",
+      "http.response.status_code": 200,
+      "hud.endpoint.methods": "post"
+    }
+  },
+  {
+    "time": "2026-11-09T13:38:54.064Z",
+    "observedTimestamp": "2026-11-09T13:39:09.102Z",
+    "severityText": "ERROR",
+    "severityNumber": 17,
+    "body": "{\"status\":2,\"context\":{\"type\":\"http\",\"endpoint_uuid\":\"b0bf0ee4-ee00-50ac-bce1-a4fb3c5c5bb4\",\"status_code\":200,\"route\":\"/stock/recount\",\"params\":{\"[hud:count]\":0},\"query\":{\"[hud:count]\":0},\"request_body\":{\"[hud:count]\":0},\"response_body\":{\"[hud:count]\":1,\"skus\":3},\"method\":\"GET\",\"extra_headers\":{},\"flow_id\":\"b0bf0ee4-ee00-50ac-bce1-a4fb3c5c5bb4\",\"timestamp\":1794231534064,\"system_info\":{\"pod_name\":\"inventory-svc-5b7c4d9f8-m2kxr\",\"node_name\":\"node-pool-general-7f3a\"},\"machine_metrics\":{\"cpu_usage\":{\"user_time\":0.00781854258929085,\"system_time\":0.00043227698855466726,\"limit\":4,\"user_percent_of_limit\":0.781854258929085,\"system_percent_of_limit\":0.04322769885546673,\"limited_cpu_user_percentage\":0.19546356473227125,\"limited_cpu_system_percentage\":0.010806924713866682},\"memory_usage\":{\"rss\":131899392,\"heap_total\":56860672,\"heap_used\":22341840,\"external\":3884537,\"system_memory\":16780361728,\"rss_percentage\":0.7860342592013998},\"event_loop_utilization\":0.0027879576221065054},\"observability_identifiers\":{\"w3c_trace_context\":{},\"b3_propagation\":{}},\"session_id\":\"dc2dbc47-3fff-4eab-a621-8ed9ff04e59e\"},\"triggerType\":\"Duration\",\"duration\":2421494658,\"durationThreshold\":1000000000,\"caught\":true,\"exceptions\":[],\"lastExceptions\":[],\"outbounds\":[{\"function\":{\"code.function.name\":\"Redis.set\",\"hud.function.content_hash\":\"ae505525\",\"hud.function.kind\":\"method\",\"hud.function.short_name\":\"Redis.set\",\"hud.function.third_party_module\":\"ioredis\"},\"caller\":{\"code.function.name\":\"StockService.recount\",\"hud.function.content_hash\":\"3428934365\",\"hud.function.kind\":\"method\",\"hud.function.short_name\":\"StockService.recount\",\"code.file.path\":\"/app/src/stock.service.js\"},\"type\":\"redis\",\"index\":0,\"tag\":\"first\",\"duration\":818902,\"timestamp\":1794231534065,\"args\":{\"[hud:count]\":4,\"command\":\"set\",\"key\":\"stock:level:SKU-1001\",\"args\":[\"5\",\"EX\",\"60\"],\"argsCount\":4},\"result\":{\"[hud:count]\":2,\"valueType\":\"string\",\"valueSize\":2}},{\"function\":{\"code.function.name\":\"Redis.set\",\"hud.function.content_hash\":\"ae505525\",\"hud.function.kind\":\"method\",\"hud.function.short_name\":\"Redis.set\",\"hud.function.third_party_module\":\"ioredis\"},\"caller\":{\"code.function.name\":\"StockService.recount\",\"hud.function.content_hash\":\"3428934365\",\"hud.function.kind\":\"method\",\"hud.function.short_name\":\"StockService.recount\",\"code.file.path\":\"/app/src/stock.service.js\"},\"type\":\"redis\",\"index\":1,\"tag\":\"first\",\"duration\":539217,\"timestamp\":1794231534913,\"args\":{\"[hud:count]\":4,\"command\":\"set\",\"key\":\"stock:level:SKU-2002\",\"args\":[\"0\",\"EX\",\"60\"],\"argsCount\":4},\"result\":{\"[hud:count]\":2,\"valueType\":\"string\",\"valueSize\":2}},{\"function\":{\"code.function.name\":\"Redis.set\",\"hud.function.content_hash\":\"ae505525\",\"hud.function.kind\":\"method\",\"hud.function.short_name\":\"Redis.set\",\"hud.function.third_party_module\":\"ioredis\"},\"caller\":{\"code.function.name\":\"StockService.recount\",\"hud.function.content_hash\":\"3428934365\",\"hud.function.kind\":\"method\",\"hud.function.short_name\":\"StockService.recount\",\"code.file.path\":\"/app/src/stock.service.js\"},\"type\":\"redis\",\"index\":2,\"tag\":\"first\",\"duration\":612995,\"timestamp\":1794231535783,\"args\":{\"[hud:count]\":4,\"command\":\"set\",\"key\":\"stock:level:SKU-3003\",\"args\":[\"12\",\"EX\",\"60\"],\"argsCount\":4},\"result\":{\"[hud:count]\":2,\"valueType\":\"string\",\"valueSize\":2}}],\"totalOutboundsCount\":3,\"outboundAggregation\":[{\"framework\":\"ioredis\",\"count\":3,\"sum_duration\":1971114,\"sum_squared_duration\":1337118328718,\"sketch\":{\"binWidth\":1.2,\"indexShift\":72,\"data\":[1,1,1]},\"exceptions\":{}}],\"version\":\"1.0.2\"}",
+    "traceId": "",
+    "spanId": "",
+    "flags": 0,
+    "droppedAttributesCount": 0,
+    "schemaUrl": "",
+    "instrumentationScope": {
+      "name": "hud-sdk",
+      "version": "1.12.1",
+      "droppedAttributesCount": 0
+    },
+    "resource": {
+      "schemaUrl": "",
+      "droppedAttributesCount": 0,
+      "attributes": {
+        "service.name": "inventory-svc",
+        "service.instance.id": "dc2dbc47-3fff-4eab-a621-8ed9ff04e59e",
+        "deployment.environment.name": "production",
+        "telemetry.sdk.name": "hud-sdk",
+        "telemetry.sdk.language": "nodejs",
+        "telemetry.sdk.version": "1.12.1",
+        "process.runtime.name": "nodejs",
+        "process.runtime.version": "22.23.4",
+        "process.pid": 1,
+        "os.type": "linux",
+        "host.arch": "amd64",
+        "hud.identity.version": "1"
+      }
+    },
+    "attributes": {
+      "hud.forensic.type": "duration",
+      "hud.forensic.version": "1.0.2",
+      "code.flow.name": "http|/stock/recount|get",
+      "code.flow.type": "http",
+      "http.route": "/stock/recount",
+      "http.request.method": "GET",
+      "http.response.status_code": 200,
+      "hud.endpoint.methods": "get"
+    }
+  },
+  {
+    "time": "2026-11-09T13:40:19.819Z",
+    "observedTimestamp": "2026-11-09T13:40:24.103Z",
+    "severityText": "ERROR",
+    "severityNumber": 17,
+    "body": "{\"status\":2,\"context\":{\"type\":\"http\",\"endpoint_uuid\":\"2c5fabb5-0a1f-532e-bdb4-7dedc7814462\",\"status_code\":200,\"route\":\"/ledger/charge\",\"params\":{\"[hud:count]\":0},\"query\":{\"[hud:count]\":0},\"request_body\":{\"[hud:count]\":1,\"amount\":320},\"response_body\":{\"[hud:count]\":2,\"charged\":320,\"currency\":\"USD\"},\"method\":\"POST\",\"extra_headers\":{},\"flow_id\":\"2c5fabb5-0a1f-532e-bdb4-7dedc7814462\",\"timestamp\":1794231619819,\"system_info\":{\"pod_name\":\"payments-ledger-84c6f5d7b-t9hvp\",\"node_name\":\"node-pool-general-2c1e\"},\"machine_metrics\":{\"cpu_usage\":{\"user_time\":0,\"system_time\":0.0005462124248496994,\"limit\":4,\"user_percent_of_limit\":0,\"system_percent_of_limit\":0.05462124248496994,\"limited_cpu_user_percentage\":0,\"limited_cpu_system_percentage\":0.013655310621242485},\"memory_usage\":{\"rss\":120918016,\"heap_total\":21209088,\"heap_used\":19202064,\"external\":3888321,\"system_memory\":16780361728,\"rss_percentage\":0.7205924279822533},\"event_loop_utilization\":0.0005138963876148998},\"observability_identifiers\":{\"w3c_trace_context\":{},\"w3c_baggage\":\"hud-context-v2=p%3Dstorefront-api~http%257C%2Fcheckout%257Cpost%3Br%3Dstorefront-api~http%257C%2Fcheckout%257Cpost\",\"b3_propagation\":{}},\"distributed_context\":[{\"parent\":{\"service_name\":\"storefront-api\",\"endpoint\":\"http|/checkout|post\"},\"root\":{\"service_name\":\"storefront-api\",\"endpoint\":\"http|/checkout|post\"}}],\"session_id\":\"d20df457-9883-48a5-86b1-2f5709539037\"},\"triggerType\":\"Duration\",\"duration\":1757102897,\"durationThreshold\":1000000000,\"caught\":true,\"exceptions\":[],\"lastExceptions\":[],\"outbounds\":[],\"totalOutboundsCount\":0,\"outboundAggregation\":[],\"version\":\"1.0.2\"}",
+    "traceId": "",
+    "spanId": "",
+    "flags": 0,
+    "droppedAttributesCount": 0,
+    "schemaUrl": "",
+    "instrumentationScope": {
+      "name": "hud-sdk",
+      "version": "1.12.1",
+      "droppedAttributesCount": 0
+    },
+    "resource": {
+      "schemaUrl": "",
+      "droppedAttributesCount": 0,
+      "attributes": {
+        "service.name": "payments-ledger",
+        "service.instance.id": "d20df457-9883-48a5-86b1-2f5709539037",
+        "deployment.environment.name": "production",
+        "telemetry.sdk.name": "hud-sdk",
+        "telemetry.sdk.language": "nodejs",
+        "telemetry.sdk.version": "1.12.1",
+        "process.runtime.name": "nodejs",
+        "process.runtime.version": "22.23.4",
+        "process.pid": 1,
+        "os.type": "linux",
+        "host.arch": "amd64",
+        "hud.identity.version": "1"
+      }
+    },
+    "attributes": {
+      "hud.forensic.type": "duration",
+      "hud.forensic.version": "1.0.2",
+      "code.flow.name": "http|/ledger/charge|post",
+      "code.flow.type": "http",
+      "http.route": "/ledger/charge",
+      "http.request.method": "POST",
+      "http.response.status_code": 200,
+      "hud.endpoint.methods": "post",
+      "hud.parent.service.name": "storefront-api",
+      "hud.parent.flow.name": "http|/checkout|post",
+      "hud.root.service.name": "storefront-api",
+      "hud.root.flow.name": "http|/checkout|post"
+    }
+  },
+  {
+    "time": "2026-11-09T13:40:19.849Z",
+    "observedTimestamp": "2026-11-09T13:40:24.107Z",
+    "severityText": "ERROR",
+    "severityNumber": 17,
+    "body": "{\"status\":2,\"context\":{\"type\":\"http\",\"endpoint_uuid\":\"ba7a6174-8922-5171-a139-84c34ada4c86\",\"status_code\":500,\"route\":\"/cart/c404\",\"params\":{\"[hud:count]\":0},\"query\":{\"[hud:count]\":0},\"request_body\":{\"[hud:count]\":0},\"response_body\":{\"[hud:count]\":3,\"statusCode\":500,\"error\":\"TypeError\",\"message\":\"Cannot read properties of undefined (reading 'items')\"},\"method\":\"GET\",\"extra_headers\":{},\"flow_id\":\"ba7a6174-8922-5171-a139-84c34ada4c86\",\"timestamp\":1794231619849,\"system_info\":{\"pod_name\":\"storefront-api-6d8f9c7b5-q4wzn\",\"node_name\":\"node-pool-general-7f3a\"},\"machine_metrics\":{\"cpu_usage\":{\"user_time\":0.001540093023255814,\"system_time\":0.0002841860465116279,\"limit\":4,\"user_percent_of_limit\":0.15400930232558138,\"system_percent_of_limit\":0.02841860465116279,\"limited_cpu_user_percentage\":0.038502325581395345,\"limited_cpu_system_percentage\":0.007104651162790698},\"memory_usage\":{\"rss\":124203008,\"heap_total\":22519808,\"heap_used\":20877688,\"external\":3898545,\"system_memory\":16780361728,\"rss_percentage\":0.740168835530838},\"event_loop_utilization\":0.001489995568242147},\"observability_identifiers\":{\"w3c_trace_context\":{},\"b3_propagation\":{}},\"session_id\":\"8dc43c6b-94b3-4dbb-b082-ba94052073da\"},\"triggerType\":\"Error\",\"duration\":505137,\"caught\":true,\"exceptions\":[],\"lastExceptions\":[],\"outbounds\":[],\"totalOutboundsCount\":0,\"outboundAggregation\":[],\"version\":\"1.0.2\",\"errorBreakdown\":{\"errors\":[],\"caught\":true,\"framework_result\":\"500\"}}",
+    "traceId": "",
+    "spanId": "",
+    "flags": 0,
+    "droppedAttributesCount": 0,
+    "schemaUrl": "",
+    "instrumentationScope": {
+      "name": "hud-sdk",
+      "version": "1.12.1",
+      "droppedAttributesCount": 0
+    },
+    "resource": {
+      "schemaUrl": "",
+      "droppedAttributesCount": 0,
+      "attributes": {
+        "service.name": "storefront-api",
+        "service.instance.id": "8dc43c6b-94b3-4dbb-b082-ba94052073da",
+        "deployment.environment.name": "production",
+        "telemetry.sdk.name": "hud-sdk",
+        "telemetry.sdk.language": "nodejs",
+        "telemetry.sdk.version": "1.12.1",
+        "process.runtime.name": "nodejs",
+        "process.runtime.version": "22.23.4",
+        "process.pid": 1,
+        "os.type": "linux",
+        "host.arch": "amd64",
+        "hud.identity.version": "1"
+      }
+    },
+    "attributes": {
+      "hud.forensic.type": "error",
+      "hud.forensic.version": "1.0.2",
+      "issue.fingerprint": "ab0524de070419ef",
+      "hud.issue.caught": true,
+      "hud.issue.framework_result": "500",
+      "hud.issue.sources": [],
+      "code.flow.name": "http|/cart/:id|get",
+      "code.flow.type": "http",
+      "http.route": "/cart/:id",
+      "http.request.method": "GET",
+      "http.response.status_code": 500,
+      "hud.endpoint.methods": "get"
+    }
+  }
+]
